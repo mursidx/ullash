@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULLASH 2K25 - College Cultural Fest</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- 🔹 Welcome Screen (Initially Visible) -->
+    <div id="welcome-screen">
+        <h1 id="event-title">ULLASH 2K25</h1>
+        <h2 id="welcome-text">Welcome</h2>
+    </div>
+
+    <!-- 🔹 Home Screen (Initially Hidden) -->
+    <div id="home-screen">
+
+        <!-- 🔹 Sleek & Thin Header -->
+        <header class="main-header">
+            <img src="2.png" alt="College Logo" class="college-logo">
+            <h1 class="college-name">OM DAYAL GROUP OF INSTITUTIONS</h1>
+            <div class="menu-btn">☰</div>
+        </header>
+
+        <!-- 🔥 Animated Title Above Countdown -->
+        <h1 id="animated-title">ULLASH 2K25</h1>
+
+        <!-- 🔹 Countdown Timer -->
+        <div id="countdown-container">
+            <h3>LET THE VIBE UNLEASH IN JUST </h3>
+            <div id="countdown">
+                <div class="timer-box">
+                    <span id="days"></span> <small>Days</small>
+                </div>
+                <div class="timer-box">
+                    <span id="hours"></span> <small>Hours</small>
+                </div>
+                <div class="timer-box">
+                    <span id="minutes"></span> <small>Minutes</small>
+                </div>
+                <div class="timer-box">
+                    <span id="seconds"></span> <small>Seconds</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔹 Navigation Bar Below Timer -->
+        <div class="event-nav">
+            <button onclick="showDay1()">Day 1</button>
+            <button onclick="showDay2()">Day 2</button>
+            <button onclick="showFoodRegistration()">Food Registration</button>
+            <button onclick="showGallery()">GALLERY</button>
+            <button onclick="showContact()">Contact Us</button>
+        </div>
+
+        <!-- 🔹 Day 1 Events Section -->
+        <div id="day1-content">
+            <h2>DAY 1 EVENTS</h2>
+            <ul>
+                <li>🎯 Break The Pot</li>
+                <li>💻 Coding Competition</li>
+                <li>🧠 Quiz</li>
+                <li>🎨 Graffiti</li>
+                <li>🎤 Singing</li>
+                <li>👗 Fashion Show</li>
+            </ul>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfFIxFcP8ywTBYEMEB16Dz9b9mn4QeEopxm4RCfhrsNsk0ewQ/viewform?usp=header" target="_blank" class="register-btn">Register Now</a>
+        </div>
+
+        <!-- 🔹 Day 2 Events Section -->
+        <div id="day2-content">
+            <h2>DAY 2 EVENTS</h2>
+            <ul>
+                <li>⚽ E - Football</li>
+                <li>🎨 Live Sketch</li>
+                <li>🔍 Treasure Hunt</li>
+                <li>🥤 Flip The Bottle</li>
+                <li>💃 Dance</li>
+                <li>📸 Photography</li>
+            </ul>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmmxA8sJDIBCnAseUYuhYFRzQcXEl35nneaGjrtEFaAMGRQQ/viewform?usp=header" target="_blank" class="register-btn">Register Now</a>
+        </div>
+
+        <!-- 🔹 Food Registration Section -->
+        <div id="food-registration-content">
+            <h2>Food Registration</h2>
+            <p class="food-message">
+                🍽️ Let’s Be Responsible – Every Meal Counts! 🍽️
+            </p>
+            <p>
+                Food is not just a necessity; it’s a privilege that many people are deprived of. Every day, countless individuals sleep on an empty stomach, struggling to find their next meal. As we come together to celebrate ULLASH2k25, let’s also be mindful of our responsibility toward reducing food waste.
+            </p>
+            <p>
+                If you are not planning to attend the event, we urge you not to register for food packets. Every extra packet that goes to waste could have been a meal for someone in need. Instead of letting food be discarded, let’s ensure that it reaches those who truly need it.
+            </p>
+            <p>
+                This small step from your side can make a huge difference. Let’s respect the value of food, show empathy for the less fortunate, and make ULLASH2k25 a celebration of joy, unity, and compassion.
+            </p>
+            <p class="food-highlight">
+                Say NO to wastage, say YES to responsibility! 🌍💙
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0Kz2h5W7X07_b3TAr2gjJslLbdeGFvUY6w2x_2Ic8apsTbg/viewform?usp=header" target="_blank" class="register-btn">Register for Food</a>
+        </div>
+
+        <!-- 🔹 Contact Us Section -->
+        <div id="contact-content">
+            <h2>Contact Us</h2>
+            <p>For any queries, feel free to reach out to us:</p>
+            <ul>
+                <li><strong>Debjeet Kar:</strong> 8420603771</li>
+                <li><strong>Mursid H. Thandar:</strong> 6290791396</li>
+                <li><strong>Arpan Mondal:</strong> 8910592767</li>
+                <li><strong>Riju Karmakar:</strong> 9883660675</li>
+                <li><strong>Anirban Koley:</strong> 7278329548</li>
+                <li><strong>Gagan Kothari:</strong> 9062718407</li>
+            </ul>
+            <p>You can also reach us via email: <strong>ullash2k25@gmail.com</strong></p>
+        </div>
+
+        <!-- 🔹 Photo Gallery Section -->
+        <div id="gallery-content">
+            <h2>📸 ULLASH Gallery</h2>
+            <div class="gallery-grid">
+                <script>
+                    for (let i = 3; i <= 103; i++) {
+                        document.write(`<div class="gallery-item"><img src="${i}.jpg" alt="Gallery Image ${i}"></div>`);
+                    }
+                </script>
+            </div>
+        </div>
+
+        <!-- 🔹 Footer -->
+        <footer class="footer-transparent">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/1P8inAV17k/?mibextid=wwXIfr" target="_blank">
+                    <img src="fb.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/omdayal_ullash?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                    <img src="ing.jpeg" alt="Instagram">
+                </a>
+            </div>
+            <p>© 2025 ALL RIGHTS RESERVED || OM DAYAL GROUP OF INSTITUTIONS || MADE BY <strong>DEBJEET KAR</strong></p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
