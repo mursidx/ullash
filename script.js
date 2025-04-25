@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let galleryInitialized = false;
     let currentPage = 1;
     const imagesPerPage = 12;
-    const totalImages = 103;
+    const totalImages = 100;
     const totalPages = Math.ceil(totalImages / imagesPerPage);
     let currentModalIndex = 0;
     
