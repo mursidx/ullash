@@ -2,18 +2,25 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial Setup
     const welcomeScreen = document.getElementById("welcome-screen");
     const homeScreen = document.getElementById("home-screen");
-    const sections = document.querySelectorAll('.content-section');
-    const menuBtn = document.querySelector('.menu-btn');
-    const nav = document.querySelector('.event-nav');
-    const navClose = document.querySelector('.nav-close');
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
   
-    // Hide all sections initially
-    sections.forEach(section => section.style.display = 'none');
+    tabContents.forEach(content => {
+      if (!content.classList.contains('active')) {
+        content.style.display = 'none';
+      }
+    });
   
-    // Welcome Screen Animation
-    const languages = ["\u09B8\u09CD\u09AC\u09BE\u0997\u09A4\u09AE", "\u0938\u094D\u0935\u093E\u0917\u0924", "Welcome", "\u062E\u0648\u0634 \u0622\u0645\u062F\u06CC\u062F", "\u0BB5\u0BB0\u0BB5\u0BC7\u0B95\u0BCD\u0BB1\u0BBF\u0B95\u0BBF\u0BB1\u0BC7\u0BA9\u0BCD", "\u0C38\u0C4D\u0C35\u0C3E\u0C17\u0C24\u0C02"];
+    const languages = [
+      "\u09B8\u09CD\u09AC\u09BE\u0997\u09A4\u09AE",
+      "\u0938\u094D\u0935\u093E\u0917\u0924",
+      "Welcome",
+      "\u062E\u0648\u0634 \u0622\u0645\u062F\u06CC\u062F",
+      "\u0BB5\u0BB0\u0BB5\u0BC7\u0B95\u0BCD\u0BB1\u0BBF\u0B95\u0BBF\u0BB1\u0BC7\u0BA9\u0BCD",
+      "\u0C38\u0C4D\u0C35\u0C3E\u0C17\u0C24\u0C02"
+    ];
     let index = 0;
-    
+  
     function changeText() {
       document.getElementById("welcome-text").textContent = languages[index];
       document.getElementById("event-title").textContent = "ULLASH 2K25";
@@ -22,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     changeText();
   
-    // Show Main Content
     setTimeout(() => {
       welcomeScreen.style.opacity = "0";
       setTimeout(() => {
@@ -31,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 1000);
     }, 5000);
   
-    // Countdown Timer
     function updateCountdown() {
       const eventDate = new Date("May 14, 2025 00:00:00").getTime();
       const now = new Date().getTime();
@@ -49,38 +54,69 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const countdownInterval = setInterval(updateCountdown, 1000);
   
-    // Mobile Menu Toggle
-    menuBtn.addEventListener('click', () => {
-      nav.classList.toggle('active');
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => {
+          content.style.display = 'none';
+          content.classList.remove('active');
+        });
+  
+        button.classList.add('active');
+        const tabId = button.dataset.tab;
+        const activeTab = document.getElementById(tabId);
+        activeTab.style.display = 'block';
+        activeTab.classList.add('active');
+  
+        activeTab.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     });
   
-    navClose.addEventListener('click', () => {
-      nav.classList.remove('active');
+    // Modal Gallery Slider
+    const galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.querySelector('.close');
+    const prevBtn = document.getElementById('prevImage');
+    const nextBtn = document.getElementById('nextImage');
+    let currentIndex = 0;
+  
+    function showImage(index) {
+      currentIndex = index;
+      modalImg.src = galleryImages[currentIndex].src;
+      modal.style.display = "block";
+    }
+  
+    galleryImages.forEach((img, idx) => {
+      img.addEventListener('click', () => showImage(idx));
     });
   
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
-        nav.classList.remove('active');
+    closeModal.addEventListener('click', () => {
+      modal.style.display = "none";
+    });
+  
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      showImage(currentIndex);
+    });
+  
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      showImage(currentIndex);
+    });
+  
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
       }
     });
   
-    // Show Section Functionality
-    window.showSection = function(sectionId) {
-      sections.forEach(section => {
-        section.style.display = section.id === sectionId ? 'block' : 'none';
-      });
-      nav.classList.remove('active');
-      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-    };
-  
-    // Initialize default section
-    setTimeout(() => showSection('day1-content'), 5100);
+    document.addEventListener('keydown', (e) => {
+      if (modal.style.display === "block") {
+        if (e.key === "ArrowRight") nextBtn.click();
+        if (e.key === "ArrowLeft") prevBtn.click();
+        if (e.key === "Escape") closeModal.click();
+      }
+    });
   });
   
-  // Section Display Functions
-  function showDay1() { showSection('day1-content'); }
-  function showDay2() { showSection('day2-content'); }
-  function showFoodRegistration() { showSection('food-registration-content'); }
-  function showGallery() { showSection('gallery-content'); }
-  function showContact() { showSection('contact-content'); }

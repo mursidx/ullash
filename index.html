@@ -2,17 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ULLASH 2K25 - College Cultural Fest</title>
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
-  <style>
-    @media (min-width: 1024px) { /* For desktop */
-      .event-nav {
-        display: none;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -29,7 +22,6 @@
     <header class="main-header">
       <img src="2.png" alt="College Logo" class="college-logo" />
       <h1 class="college-name">OM DAYAL GROUP OF INSTITUTIONS</h1>
-      <div class="menu-btn">☰</div>
     </header>
 
     <!-- Animated Title -->
@@ -46,27 +38,17 @@
       </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="event-nav">
-      <button class="nav-close">×</button>
-      <button onclick="showDay1()">Day 1</button>
-      <button onclick="showDay2()">Day 2</button>
-      <button onclick="showFoodRegistration()">Food Registration</button>
-      <button onclick="showGallery()">Gallery</button>
-      <button onclick="showContact()">Contact</button>
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+      <button class="tab-button active" data-tab="day1-content">Day 1</button>
+      <button class="tab-button" data-tab="day2-content">Day 2</button>
+      <button class="tab-button" data-tab="food-registration-content">Food</button>
+      <button class="tab-button" data-tab="gallery-content">Gallery</button>
+      <button class="tab-button" data-tab="contact-content">Contact</button>
     </nav>
 
-    <div style="display: flex; justify-content: center; gap: 5px;">
-      <button class="tabBtn" onclick="showDay1()">Day 1</button>
-      <button class="tabBtn" onclick="showDay2()">Day 2</button>
-      <button class="tabBtn" onclick="showFoodRegistration()">Food Registration</button>
-      <button class="tabBtn" onclick="showGallery()">Gallery</button>
-      <button class="tabBtn" onclick="showContact()">Contact</button>
-    </div>
-
-
     <!-- Content Sections -->
-    <div id="day1-content" class="content-section">
+    <div id="day1-content" class="tab-content active">
       <h2>DAY 1 EVENTS</h2>
       <ul>
         <li>🎯 Break The Pot</li>
@@ -79,7 +61,7 @@
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSfFIxFcP8ywTBYEMEB16Dz9b9mn4QeEopxm4RCfhrsNsk0ewQ/viewform?usp=header" target="_blank" class="register-btn">Register Now</a>
     </div>
 
-    <div id="day2-content" class="content-section">
+    <div id="day2-content" class="tab-content">
       <h2>DAY 2 EVENTS</h2>
       <ul>
         <li>⚽ E - Football</li>
@@ -92,7 +74,7 @@
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmmxA8sJDIBCnAseUYuhYFRzQcXEl35nneaGjrtEFaAMGRQQ/viewform?usp=header" target="_blank" class="register-btn">Register Now</a>
     </div>
 
-    <div id="food-registration-content" class="content-section">
+    <div id="food-registration-content" class="tab-content">
       <h2>Food Registration</h2>
       <p class="food-message">🍽️ Let’s Be Responsible – Every Meal Counts! 🍽️</p>
       <p>
@@ -102,22 +84,7 @@
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0Kz2h5W7X07_b3TAr2gjJslLbdeGFvUY6w2x_2Ic8apsTbg/viewform?usp=header" target="_blank" class="register-btn">Register for Food</a>
     </div>
 
-    <div id="contact-content" class="content-section">
-      <h2>Contact Us</h2>
-      <p>For any queries, feel free to reach out:</p>
-      <ul class="contact-list">
-        <li><strong>Debjeet Kar:</strong> 8420603771</li>
-        <li><strong>Mursid H. Thandar:</strong> 6290791396</li>
-        <li><strong>Arpan Mondal:</strong> 8910592767</li>
-        <li><strong>Riju Karmakar:</strong> 9883660675</li>
-        <li><strong>Anirban Koley:</strong> 7278329548</li>
-        <li><strong>Gagan Kothari:</strong> 9062718407</li>
-      </ul>
-      <p>Email us: <strong>ullash2k25@gmail.com</strong></p>
-    </div>
-
-    <!-- Gallery -->
-    <div id="gallery-content" class="content-section">
+    <div id="gallery-content" class="tab-content">
       <h2>📸 ULLASH Gallery</h2>
       <div class="gallery-grid">
         <!-- Optimized gallery - Images lazy-loaded -->
@@ -226,6 +193,20 @@
       </div>
     </div>
 
+    <div id="contact-content" class="tab-content">
+      <h2>Contact Us</h2>
+      <p>For any queries, feel free to reach out:</p>
+      <ul class="contact-list">
+        <li><strong>Debjeet Kar:</strong> <a href="https://wa.me/918420603771?text=Hello%2C%20I%20need%20help%20with%20a%20college%20fest%20issue." target="_blank" style="color: #0074cc; text-decoration: none; font-weight: normal; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#0074cc';">8420603771</a></li>
+        <li><strong>Mursid H. Thandar:</strong> <a href="https://wa.me/916290791396?text=Hello%2C%20I%20need%20help%20with%20a%20college%20fest%20issue." target="_blank" style="color: #0074cc; text-decoration: none; font-weight: normal; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#0074cc';">6290791396</a></li>
+        <li><strong>Arpan Mondal:</strong> <a href="https://wa.me/918910592767?text=Hello%2C%20I%20need%20help%20with%20a%20college%20fest%20issue." target="_blank" style="color: #0074cc; text-decoration: none; font-weight: normal; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#0074cc';">8910592767</a></li>
+        <li><strong>Riju Karmakar:</strong> <a href="https://wa.me/919883660675?text=Hello%2C%20I%20need%20help%20with%20a%20college%20fest%20issue." target="_blank" style="color: #0074cc; text-decoration: none; font-weight: normal; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#0074cc';">9883660675</a></li>
+        <li><strong>Anirban Koley:</strong> <a href="https://wa.me/917278329548?text=Hello%2C%20I%20need%20help%20with%20a%20college%20fest%20issue." target="_blank" style="color: #0074cc; text-decoration: none; font-weight: normal; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#0074cc';">7278329548</a></li>
+        <li><strong>Gagan Kothari:</strong> <a href="https://wa.me/919062718407?text=Hello%2C%20I%20need%20help%20with%20a%20college%20fest%20issue." target="_blank" style="color: #0074cc; text-decoration: none; font-weight: normal; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#0074cc';">9062718407</a></li>
+      </ul>
+      <p>Email us: <a href="mailto:ullash2k25@gmail.com?subject=Help%20needed%20with%20college%20fest%20issue&body=Hi%2C%20I%20need%20help%20with%20a%20college%20fest%20issue.%20" target="_blank" style="color: #0074cc; text-decoration: none; font-weight: normal; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3';" onmouseout="this.style.color='#0074cc';"><strong>ullash2k25@gmail.com</strong></a></p>
+    </div>
+
     <!-- Footer -->
     <footer class="footer-transparent">
       <div class="social-icons">
@@ -240,6 +221,13 @@
     </footer>
 
   </div>
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+    <button id="prevImage">&#10094;</button>
+    <button id="nextImage">&#10095;</button>
+  </div>
+  
 
 </body>
 </html>
